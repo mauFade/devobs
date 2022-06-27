@@ -14,8 +14,20 @@ export class VacancyCreateUseCase {
   async execute(request: VacancyCreateRequest) {
     const { companyId, title, description, skill, salary } = request;
 
-    if (!companyId || !title || !description || !skill || !salary) {
-      throw new Error("All fields are required.");
+    if (!title) {
+      throw new Error("Title is required.");
+    }
+
+    if (!description) {
+      throw new Error("Description is required.");
+    }
+
+    if (!skill) {
+      throw new Error("Skill level or experience is required.");
+    }
+
+    if (salary < 1 || salary === 0) {
+      throw new Error("Salary is required.");
     }
 
     const vacancy = await this.vacancyRepo.create({

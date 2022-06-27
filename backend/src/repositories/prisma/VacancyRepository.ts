@@ -17,8 +17,12 @@ export class PrismaVacancyRepository implements VacancyRepository {
   }
 
   async read() {
-    const companies = await prisma.company.findMany();
+    const vacancies = await prisma.vacancy.findMany({
+      include: {
+        company: true,
+      },
+    });
 
-    return companies;
+    return vacancies;
   }
 }

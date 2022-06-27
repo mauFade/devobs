@@ -20,5 +20,6 @@ router.post("/api/v1/company", auth.verifyJWT, CompanyController.create);
 router.get("/api/v1/company", auth.verifyJWT, CompanyController.read);
 
 router.post("/api/v1/vacancy", auth.verifyJWT, VacancyController.create);
+router.get("/api/v1/vacancy", auth.verifyJWT, VacancyController.read);
 
 export default router;
