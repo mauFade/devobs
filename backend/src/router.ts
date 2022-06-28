@@ -7,6 +7,7 @@ import AuthCompanyController from "./controllers/AuthCompanyController";
 import UserController from "./controllers/UserController";
 import CompanyController from "./controllers/CompanyController";
 import VacancyController from "./controllers/VacancyController";
+import ProjectController from "./controllers/ProjectController";
 
 const router = Router();
 
@@ -21,5 +22,8 @@ router.get("/api/v1/company", auth.verifyJWT, CompanyController.read);
 
 router.post("/api/v1/vacancy", auth.verifyJWT, VacancyController.create);
 router.get("/api/v1/vacancy", auth.verifyJWT, VacancyController.read);
+
+router.post("/api/v1/project", auth.verifyJWT, ProjectController.create);
+router.get("/api/v1/project", auth.verifyJWT, ProjectController.read);
 
 export default router;
