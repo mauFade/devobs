@@ -1,3 +1,4 @@
+import { VacancyReadUseCase } from "./../use-cases/Vacancy/read-use-case";
 import { VacancyCreateUseCase } from "../use-cases/Vacancy/create-use-case";
 
 const createSpy = jest.fn();
@@ -16,6 +17,8 @@ describe("Create a vacancy", () => {
         salary: 2000,
       })
     ).resolves.not.toThrow();
+
+    expect(createSpy).toHaveBeenCalled();
   });
 
   it("Should return error due to missing title", async () => {
@@ -64,5 +67,15 @@ describe("Create a vacancy", () => {
         salary: 0,
       })
     ).rejects.toThrow();
+  });
+});
+
+describe("Get all vacancies", () => {
+  const readVacancy = new VacancyReadUseCase({ create: createSpy, read: readSpy });
+
+  it("Should return all vacancies", async () => {
+    await expect(readVacancy.read()).resolves.not.toThrow();
+
+    expect(readSpy).toHaveBeenCalled();
   });
 });
