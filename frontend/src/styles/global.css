@@ -10,5 +10,5 @@ body,
 
 body {
   -webkit-font-smoothing: antialiased;
-  @apply bg-zinc-900;
+  @apply bg-zinc-900 text-stone-100;
 }
